@@ -20,9 +20,9 @@
 	{{ else if .Network }}
 		# {{ .Container.Name }}
 		{{ if .Network.IP }}
-			server {{ .Network.IP }};
+			server {{ .Network.IP }} down;
 		{{ else }}
-			server 127.0.0.1;
+			server 127.0.0.1 down;
 		{{ end }}
 	{{ end }}
 {{ end }}
@@ -204,7 +204,7 @@ upstream {{ $upstream_name }} {
           {{ end }}
         {{ else }}
           # Cannot connect to network of this container
-          server 127.0.0.1 down;
+          server 127.0.0.1;
         {{ end }}
   		{{ end }}
   	{{ end }}
